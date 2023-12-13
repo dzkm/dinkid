@@ -1,32 +1,32 @@
 const List daily = [
   {
     "icon": "assets/images/bank.png",
-    "name": "Bank",
-    "date": "Fri 10AM",
-    "price": "\$340.00"
+    "name": "Banco",
+    "date": "Sex 10:00",
+    "price": "R\$340,00"
   },
   {
     "icon": "assets/images/auto.png",
-    "name": "Automobile",
-    "date": "Mon 8AM",
-    "price": "\$70.00"
+    "name": "Carro",
+    "date": "Seg 08:47",
+    "price": "R\$70,00"
   },
   {
     "icon": "assets/images/gift.png",
-    "name": "Gift",
-    "date": "Sat 6PM",
-    "price": "\$110.00"
+    "name": "Presente",
+    "date": "Sab 18:17",
+    "price": "R\$110,00"
   },
   {
     "icon": "assets/images/eating.png",
-    "name": "Eating",
-    "date": "Sun 5PM",
-    "price": "\$60.00"
+    "name": "Comida",
+    "date": "Sab 5:25",
+    "price": "R\$60,00"
   },
   {
     "icon": "assets/images/charity.png",
-    "name": "Charity",
-    "date": "Wed 12PM",
-    "price": "\$1200.00"
+    "name": "Placa-mãe projeto PC Gamer",
+    "date": "Qua 12:59",
+    "price": "R\$1200,00"
   }
 ];

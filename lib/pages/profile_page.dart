@@ -1,4 +1,4 @@
-import 'package:budget_tracker_ui/theme/colors.dart';
+import 'package:dinkid_mobile/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';

@@ -1,9 +1,14 @@
-import 'package:budget_tracker_ui/pages/root_app.dart';
+import 'package:dinkid_mobile/pages/root_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: RootApp(),
-  ));
+  runApp(
+    ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: RootApp(),
+      ),
+    ),
+  );
 }

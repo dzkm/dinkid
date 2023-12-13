@@ -1,6 +1,6 @@
-import 'package:budget_tracker_ui/json/day_month.dart';
-import 'package:budget_tracker_ui/theme/colors.dart';
-import 'package:budget_tracker_ui/widget/chart.dart';
+import 'package:dinkid_mobile/json/day_month.dart';
+import 'package:dinkid_mobile/theme/colors.dart';
+import 'package:dinkid_mobile/widgets/chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';

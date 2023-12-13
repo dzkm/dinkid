@@ -1,9 +1,10 @@
-import 'package:budget_tracker_ui/pages/budget_page.dart';
-import 'package:budget_tracker_ui/pages/create_budge_page.dart';
-import 'package:budget_tracker_ui/pages/daily_page.dart';
-import 'package:budget_tracker_ui/pages/profile_page.dart';
-import 'package:budget_tracker_ui/pages/stats_page.dart';
-import 'package:budget_tracker_ui/theme/colors.dart';
+import 'package:dinkid_mobile/pages/budget_page.dart';
+import 'package:dinkid_mobile/pages/create_budge_page.dart';
+import 'package:dinkid_mobile/pages/daily_page.dart';
+import 'package:dinkid_mobile/pages/profile_page.dart';
+import 'package:dinkid_mobile/pages/stats_page.dart';
+import 'package:dinkid_mobile/theme/colors.dart';
+import 'package:dinkid_mobile/pages/lancamento.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -17,11 +18,13 @@ class _RootAppState extends State<RootApp> {
   int pageIndex = 0;
   List<Widget> pages = [
     DailyPage(),
-    StatsPage(),
     BudgetPage(),
-    ProfilePage(),
-    CreatBudgetPage()
+    Lancamento(),
   ];
+
+  void initializeStuff() async {
+    WidgetsFlutterBinding.ensureInitialized();
+  }
 
   @override
   void initState() {
@@ -36,20 +39,21 @@ class _RootAppState extends State<RootApp> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timestamp) {});
     return Scaffold(
         body: getBody(),
         bottomNavigationBar: getFooter(),
         floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              selectedTab(4);
-            },
-            child: Icon(
-              Icons.add,
-              size: 25,
-            ),
-            backgroundColor: Colors.pink
-            //params
-            ),
+          onPressed: () {
+            selectedTab(2);
+          },
+          child: Icon(
+            Icons.add,
+            size: 25,
+          ),
+          backgroundColor: primary,
+          //params
+        ),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked);
   }
@@ -64,9 +68,7 @@ class _RootAppState extends State<RootApp> {
   Widget getFooter() {
     List<IconData> iconItems = [
       Ionicons.md_calendar,
-      Ionicons.md_stats,
       Ionicons.md_wallet,
-      Ionicons.ios_person,
     ];
 
     return AnimatedBottomNavigationBar(

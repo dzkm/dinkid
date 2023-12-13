@@ -1,6 +1,6 @@
-import 'package:budget_tracker_ui/json/daily_json.dart';
-import 'package:budget_tracker_ui/json/day_month.dart';
-import 'package:budget_tracker_ui/theme/colors.dart';
+import 'package:dinkid_mobile/json/daily_json.dart';
+import 'package:dinkid_mobile/json/day_month.dart';
+import 'package:dinkid_mobile/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -42,7 +42,7 @@ class _DailyPageState extends State<DailyPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Daily Transaction",
+                        "Transações Diarias",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -123,21 +123,6 @@ class _DailyPageState extends State<DailyPage> {
                         width: (size.width - 40) * 0.7,
                         child: Row(
                           children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: grey.withOpacity(0.1),
-                              ),
-                              child: Center(
-                                child: Image.asset(
-                                  daily[index]['icon'],
-                                  width: 30,
-                                  height: 30,
-                                ),
-                              ),
-                            ),
                             SizedBox(width: 15),
                             Container(
                               width: (size.width - 90) * 0.5,
@@ -218,7 +203,7 @@ class _DailyPageState extends State<DailyPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Text(
-                    "\$1780.00",
+                    "R\$1780,00",
                     style: TextStyle(
                         fontSize: 20,
                         color: black,

@@ -63,6 +63,6 @@ Liste o time responsável pelo desenvolvimento do projeto
 
 ## Licença 
 
-The [MIT License](Dinkid) (MIT)
+The [MIT License]() (MIT)
 
-Copyright :copyright:2023 - Casa automática backend
+Copyright :copyright:2023 - Dinkid

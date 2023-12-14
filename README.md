@@ -35,53 +35,24 @@
 
 ... 
 
-Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
-
 ## Pré-requisitos
-:warning: [PHP](https://www.php.net/)
+:warning: [Flutter](https://flutter.dev/)
 <br>
-:warning: [Docker](https://www.docker.com/)
-<br>
-:warning: [Composer](https://getcomposer.org/)
 
 ## Como rodar a aplicação :arrow_forward:
 
 No terminal, clone o projeto: 
 
 ```
-git clone git@github.com:dzkm/casa-automatica-backend.git
+git clone git@github.com:dzkm/dinkid
 ```
-
-Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio projeto e verfique se o passo a passo funciona**
-
-
-## JSON :floppy_disk:
-
-### Rota para comodos:
-GET /rooms -> obtem todos os cômodos
-<br>
-GET /rooms/all -> obtem todos os cômodos (inclusive os deletados) 
-<br>
-GET /rooms/{id} -> obtem um comodo específico
-<br>
-POST /rooms -> cria um comodo
-<br>
-PUT /rooms/{id} -> atualiza um comodo
-<br>
-DELETE /rooms/{id} -> apaga um comodo específico
-
-Se quiser, coloque uma amostra do banco de dados 
-
-## Iniciando/Configurando banco de dados
-
-Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
 
 ## Linguagens, dependencias e libs utilizadas :books:
 
-- [PHP](https://www.php.net/)
+- [Flutter](https://flutter.dev/)
+- [SQLite](https://www.sqlite.org/index.html)
 
 
-Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo Github 
 
 ## Desenvolvedores/Contribuintes :octocat:
 
@@ -89,10 +60,9 @@ Liste o time responsável pelo desenvolvimento do projeto
 
 - [Djonathan](https://github.com/dzkm)
 - [Monike](https://github.com/monike29)
-- [Fernando](https://github.com/fernando-ao)
 
 ## Licença 
 
-The [MIT License]() (MIT)
+The [MIT License](Dinkid) (MIT)
 
 Copyright :copyright:2023 - Casa automática backend

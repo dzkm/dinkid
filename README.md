@@ -20,7 +20,7 @@
 ## Descrição do projeto 
 
 <p align="justify">
-  Trabalho desenvolvido pelos alunos do IFSC Campus São Lourenço do Oeste que consiste em desenvolver um aplicativo android mobile compatível com diversos tipos de renda, controle de caixa e sistemas avançados de simulação financeira.
+  Trabalho em desenvolvimento elaborado por dois alunos do IFSC Campus São Lourenço do Oeste que consiste em desenvolver um aplicativo android mobile compatível com diversos tipos de renda, controle de caixa e sistemas avançados de simulação financeira.
 </p>
 
 ## Funcionalidades

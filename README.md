@@ -49,7 +49,12 @@ git clone git@github.com:dzkm/dinkid
 
 Adquira as dependencias:
 ```sh
-pub get 
+flutter pub get 
+```
+
+Monte o banco de dados:
+```sh
+dart run build_runner build
 ```
 
 Execute o projeto

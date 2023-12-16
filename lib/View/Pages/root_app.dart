@@ -1,10 +1,10 @@
-import 'package:dinkid_mobile/pages/budget_page.dart';
-import 'package:dinkid_mobile/pages/create_budge_page.dart';
-import 'package:dinkid_mobile/pages/daily_page.dart';
-import 'package:dinkid_mobile/pages/profile_page.dart';
-import 'package:dinkid_mobile/pages/stats_page.dart';
-import 'package:dinkid_mobile/theme/colors.dart';
-import 'package:dinkid_mobile/pages/lancamento.dart';
+import 'package:dinkid_mobile/View/Pages/budget_page.dart';
+import 'package:dinkid_mobile/View/Pages/create_budge_page.dart';
+import 'package:dinkid_mobile/View/Pages/daily_page.dart';
+import 'package:dinkid_mobile/View/Pages/profile_page.dart';
+import 'package:dinkid_mobile/View/Pages/stats_page.dart';
+import 'package:dinkid_mobile/Theme/colors.dart';
+import 'package:dinkid_mobile/View/lancamento.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';

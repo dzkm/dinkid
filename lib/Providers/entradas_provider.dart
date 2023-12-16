@@ -1,5 +1,4 @@
-import 'package:dinkid_mobile/src/includes/database.dart';
-import 'package:dinkid_mobile/src/models/entradas.dart';
+import 'package:dinkid_mobile/Connections/Database/database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class EntradasController extends StateNotifier<List<Entrada>> {

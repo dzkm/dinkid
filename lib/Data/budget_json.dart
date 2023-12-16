@@ -1,4 +1,4 @@
-import 'package:dinkid_mobile/theme/colors.dart';
+import 'package:dinkid_mobile/Theme/colors.dart';
 
 const List budget_json = [
   {

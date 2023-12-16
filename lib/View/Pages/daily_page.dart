@@ -1,6 +1,6 @@
-import 'package:dinkid_mobile/json/daily_json.dart';
-import 'package:dinkid_mobile/json/day_month.dart';
-import 'package:dinkid_mobile/theme/colors.dart';
+import 'package:dinkid_mobile/Data/daily_json.dart';
+import 'package:dinkid_mobile/Data/day_month.dart';
+import 'package:dinkid_mobile/Theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 

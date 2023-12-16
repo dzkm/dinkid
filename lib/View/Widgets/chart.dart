@@ -1,4 +1,4 @@
-import 'package:dinkid_mobile/theme/colors.dart';
+import 'package:dinkid_mobile/Theme/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

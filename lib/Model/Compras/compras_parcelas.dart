@@ -1,7 +1,7 @@
 // @dart=2.17
 import 'package:drift/drift.dart';
-import 'package:dinkid_mobile/src/Model/Compras/compras.dart';
-import 'package:dinkid_mobile/src/Model/Movimentacoes/movimentacoes.dart';
+import 'package:dinkid_mobile/Model/Compras/compras.dart';
+import 'package:dinkid_mobile/Model/Movimentacoes/movimentacoes.dart';
 
 @DataClassName('CompraParcela')
 class ComprasParcelas extends Table {

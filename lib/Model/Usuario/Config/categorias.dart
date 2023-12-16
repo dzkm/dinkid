@@ -1,6 +1,6 @@
 // @dart=2.17
 import 'package:drift/drift.dart';
-import 'package:dinkid_mobile/src/Model/Movimentacoes/tipos_movimentacoes.dart';
+import 'package:dinkid_mobile/Model/Movimentacoes/tipos_movimentacoes.dart';
 
 @DataClassName('Categoria')
 class Categorias extends Table {

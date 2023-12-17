@@ -13,7 +13,8 @@ class CategoriasController extends StateNotifier<List<Categoria>> {
   }
 
   Future<List<Categoria>> allCategorias() async {
-    return _categoriaRepository.selectAll();
+    var result = await _categoriaRepository.selectAll();
+    return result.map((item) => item as Categoria).toList();
   }
 }
 

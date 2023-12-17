@@ -2,44 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:dinkid_mobile/Providers/Models/Controllers/movimentacao_controller.dart';
 import 'package:dinkid_mobile/Connections/Database/database.dart';
 import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_carteira_notifier.dart';
-import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_categoria_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dinkid_mobile/View/Widgets/Usuario/Config/Categorias/CategoriaDropdownWidget.dart';
 
-class Category {
-  final String label;
-  final Color color;
-  final IconData icon;
-
-  const Category(this.label, this.color, this.icon);
-}
-
-const Category hardware =
-    Category('Hardware', Colors.lightBlue, Icons.smartphone);
-const Category roupas = Category('Roupas', Colors.red, Icons.person);
-const Category essenciais =
-    Category('Essenciais', Colors.yellow, Icons.local_gas_station);
-const Category movimentacao =
-    Category('Movimentação', Colors.orange, Icons.gps_fixed);
-
-final List<Category> categories = [hardware, roupas, essenciais, movimentacao];
 final List<String> wallets = ["Cartão Sicoob", "Débito Nubank", "Dinheiro"];
 
 class Lancamento extends ConsumerWidget {
   Lancamento({Key key}) : super(key: key);
   var valorController = TextEditingController();
   var descricaoController = TextEditingController();
-  var categoryController = TextEditingController();
   var walletController = TextEditingController();
-  Category selectedCategory = hardware;
   String selectedWallet = wallets[0];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final entradaCategoriaNotifier =
-        ref.watch(entradaCategoriaNotifierProvider);
     final entradaCarteiraNotifier = ref.watch(entradaCarteiraNotifierProvider);
 
-    categoryController.text = entradaCategoriaNotifier.descricao.value;
     walletController.text = entradaCarteiraNotifier.descricao.value;
 
     return Scaffold(
@@ -107,41 +85,7 @@ class Lancamento extends ConsumerWidget {
           SizedBox(height: 10),
           Text("Categoria",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          DropdownMenu(
-            initialSelection: hardware,
-            controller: categoryController,
-            leadingIcon: Container(
-              width: 25,
-              height: 25,
-              decoration: BoxDecoration(
-                color: selectedCategory.color,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(selectedCategory.icon),
-            ),
-            label: const Text('Color'),
-            onSelected: (Category category) => {selectedCategory = category},
-            dropdownMenuEntries: categories
-                .map<DropdownMenuEntry<Category>>((Category category) {
-              return DropdownMenuEntry<Category>(
-                value: category,
-                label: category.label,
-                leadingIcon: Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                    color: category.color,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(category.icon),
-                ),
-                enabled: category.label != 'Grey',
-                style: MenuItemButton.styleFrom(
-                  foregroundColor: category.color,
-                ),
-              );
-            }).toList(),
-          ),
+          CategoriaDropdownWidget(),
           SizedBox(height: 10),
           Text(
             "Carteira",

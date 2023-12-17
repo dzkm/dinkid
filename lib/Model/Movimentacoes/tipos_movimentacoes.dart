@@ -9,7 +9,7 @@ class TiposMovimentacoes extends Table {
   BoolColumn get aceita_entrada => boolean().withDefault(Constant(true))();
   DateTimeColumn get createdAt =>
       dateTime().withDefault(Constant(DateTime.now()))();
-  DateTimeColumn get updatedAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime().nullable()();
   BoolColumn get isDeleted => boolean().withDefault(Constant(false))();
-  DateTimeColumn get deletedAt => dateTime()();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
 }

@@ -7,7 +7,7 @@ class Carteiras extends Table {
   TextColumn get descricao => text().withLength(min: 2, max: 32)();
   DateTimeColumn get createdAt =>
       dateTime().withDefault(Constant(DateTime.now()))();
-  DateTimeColumn get updatedAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime().nullable()();
   BoolColumn get isDeleted => boolean().withDefault(Constant(false))();
-  DateTimeColumn get deletedAt => dateTime()();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
 }

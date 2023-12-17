@@ -8,7 +8,7 @@ class Compras extends Table {
   IntColumn get numero_parcelas => integer()();
   DateTimeColumn get createdAt =>
       dateTime().withDefault(Constant(DateTime.now()))();
-  DateTimeColumn get updatedAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime().nullable()();
   BoolColumn get isDeleted => boolean().withDefault(Constant(false))();
-  DateTimeColumn get deletedAt => dateTime()();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
 }

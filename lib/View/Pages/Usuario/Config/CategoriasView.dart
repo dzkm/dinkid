@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:dinkid_mobile/View/Widgets/Usuario/Config/Categorias/CategoriaListView.dart';
 
 class CategoriasView extends StatelessWidget {
   const CategoriasView({Key key}) : super(key: key);
-
-  Widget body(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +20,7 @@ class CategoriasView extends StatelessWidget {
           ),
         ],
       ),
+      body: Center(child: CategoriaListView()),
     );
   }
 }

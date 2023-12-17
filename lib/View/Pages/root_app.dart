@@ -5,6 +5,7 @@ import 'package:dinkid_mobile/View/Pages/profile_page.dart';
 import 'package:dinkid_mobile/View/Pages/stats_page.dart';
 import 'package:dinkid_mobile/Theme/colors.dart';
 import 'package:dinkid_mobile/View/Pages/lancamento.dart';
+import 'package:dinkid_mobile/View/Pages/Usuario/Config/CategoriasView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -19,6 +20,7 @@ class _RootAppState extends State<RootApp> {
   List<Widget> pages = [
     DailyPage(),
     BudgetPage(),
+    CategoriasView(),
     Lancamento(),
   ];
 
@@ -45,17 +47,16 @@ class _RootAppState extends State<RootApp> {
         bottomNavigationBar: getFooter(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            selectedTab(2);
+            selectedTab(3);
           },
           child: Icon(
-            Icons.add,
+            Icons.attach_money,
             size: 25,
           ),
           backgroundColor: primary,
           //params
         ),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.centerDocked);
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat);
   }
 
   Widget getBody() {
@@ -69,6 +70,7 @@ class _RootAppState extends State<RootApp> {
     List<IconData> iconItems = [
       Ionicons.md_calendar,
       Ionicons.md_wallet,
+      Ionicons.md_list,
     ];
 
     return AnimatedBottomNavigationBar(
@@ -77,11 +79,10 @@ class _RootAppState extends State<RootApp> {
       inactiveColor: Colors.black.withOpacity(0.5),
       icons: iconItems,
       activeIndex: pageIndex,
-      gapLocation: GapLocation.center,
+      gapLocation: GapLocation.end,
       notchSmoothness: NotchSmoothness.softEdge,
       leftCornerRadius: 10,
       iconSize: 25,
-      rightCornerRadius: 10,
       onTap: (index) {
         selectedTab(index);
       },

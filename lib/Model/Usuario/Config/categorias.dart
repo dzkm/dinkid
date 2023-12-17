@@ -6,8 +6,9 @@ import 'package:dinkid_mobile/Model/Movimentacoes/tipos_movimentacoes.dart';
 class Categorias extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get descricao => text().withLength(min: 2, max: 32)();
-  TextColumn get icone => text()();
-  TextColumn get cor => text()();
+  TextColumn get icone => text().withDefault(Constant(
+      "{codePoint: 984405, fontFamily: MaterialIcons, fontPackage: null}"))();
+  TextColumn get cor => text().withDefault(Constant("#838383"))();
   IntColumn get id_tipos_movimentacao =>
       integer().references(TiposMovimentacoes, #id)();
   DateTimeColumn get createdAt =>

@@ -8,3 +8,8 @@ class EntradaCategoriaNotifier extends StateNotifier<CategoriasCompanion> {
     state = categoria;
   }
 }
+
+final entradaCategoriaNotifierProvider =
+    StateNotifierProvider<EntradaCategoriaNotifier, CategoriasCompanion>((ref) {
+  return EntradaCategoriaNotifier(CategoriasCompanion());
+});

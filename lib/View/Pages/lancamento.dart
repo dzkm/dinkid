@@ -1,8 +1,8 @@
-import 'package:dinkid_mobile/Theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:dinkid_mobile/Providers/entradas_provider.dart';
+import 'package:dinkid_mobile/Providers/Models/Controllers/movimentacao_controller.dart';
 import 'package:dinkid_mobile/Connections/Database/database.dart';
+import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_carteira_notifier.dart';
+import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_categoria_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Category {
@@ -35,6 +35,13 @@ class Lancamento extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final entradaCategoriaNotifier =
+        ref.watch(entradaCategoriaNotifierProvider);
+    final entradaCarteiraNotifier = ref.watch(entradaCarteiraNotifierProvider);
+
+    categoryController.text = entradaCategoriaNotifier.descricao.value;
+    walletController.text = entradaCarteiraNotifier.descricao.value;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Lançamento"),

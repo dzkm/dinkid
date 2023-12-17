@@ -8,3 +8,8 @@ class EntradaCarteiraNotifier extends StateNotifier<CarteirasCompanion> {
     state = categoria;
   }
 }
+
+final entradaCarteiraNotifierProvider =
+    StateNotifierProvider<EntradaCarteiraNotifier, CarteirasCompanion>((ref) {
+  return EntradaCarteiraNotifier(CarteirasCompanion());
+});

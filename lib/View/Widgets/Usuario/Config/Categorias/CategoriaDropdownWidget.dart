@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dinkid_mobile/Connections/Database/database.dart';
 import 'package:dinkid_mobile/Providers/Models/Controllers/Usuario/Config/CategoriasController.dart';
-import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_categoria_notifier.dart';
+import 'package:dinkid_mobile/Providers/View/Usuario/Config/Categoria/CategoriaDropdownNotifier.dart';
 import 'package:dinkid_mobile/View/Widgets/Generic/RoundedIconWithBackground.dart';
 import 'package:dinkid_mobile/Helpers/Icons/IconDataMapping.dart';
 
@@ -47,8 +47,8 @@ class CategoriaDropdownWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CategoriasController controller = ref.watch(categoriasControllerProvider);
-    final entradaCategoriaNotifier =
-        ref.watch(entradaCategoriaNotifierProvider);
+    final categoriaDropdownNotifier =
+        ref.watch(categoriaDropdownNotifierProvider);
 
     return FutureBuilder<List<Categoria>>(
       future: controller.allCategorias(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dinkid_mobile/Providers/Models/Controllers/movimentacao_controller.dart';
+import 'package:dinkid_mobile/Providers/Models/Controllers/Movimentacoes/MovimentacaoController.dart';
 import 'package:dinkid_mobile/Connections/Database/database.dart';
-import 'package:dinkid_mobile/Providers/View/Movimentacao/movimentacao_carteira_notifier.dart';
+import 'package:dinkid_mobile/Providers/View/Usuario/Config/Carteira/CarteiraDropdownNotifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dinkid_mobile/View/Widgets/Usuario/Config/Categorias/CategoriaDropdownWidget.dart';
 
@@ -16,7 +16,7 @@ class Lancamento extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final entradaCarteiraNotifier = ref.watch(entradaCarteiraNotifierProvider);
+    final entradaCarteiraNotifier = ref.watch(carteiraDropdownNotifierProvider);
 
     walletController.text = entradaCarteiraNotifier.descricao.value;
 

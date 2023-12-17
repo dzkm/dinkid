@@ -39,35 +39,29 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
   }
 
   Future<int> updateAll(UpdateCompanion<D> item) async {
-    return _database.update(this.table).write(item);
+    return await _database.update(this.table).write(item);
   }
 
-  Future<int> updateByAutoIncrement(int id, UpdateCompanion<D> item) async {
+  Future<bool> updateByAutoIncrement(UpdateCompanion<D> item) async {
     var idColumn =
         table.$columns.firstWhere((column) => column.hasAutoIncrement);
-    return (_database.update(this.table)..where((tbl) => idColumn.equals(id)))
-        .write(item);
+    return await (_database.update(this.table).replace(item));
   }
 
   Future<int> updateWithCustomWhere(
       Expression<bool> Function(T tbl) filter, UpdateCompanion<D> item) async {
-    return (_database.update(this.table)..where(filter)).write(item);
+    return await (_database.update(this.table)..where(filter)).write(item);
   }
 
-  Future<int> deleteByPrimaryKey(int id) async {
+  Future<int> trueDeleteByAutoIncrement(int id) async {
     var idColumn =
         table.$columns.firstWhere((column) => column.hasAutoIncrement);
-    var currentTime = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-
-    return (_database.update(this.table)..where((tbl) => idColumn.equals(id)))
-        .write(this.table.deleted.set(true) &
-            this.table.deletedAt.set(currentTime));
-  }
-
-  Future<int> trueDeleteByPrimaryKey(int id) async {
-    var idColumn =
-        table.$columns.firstWhere((column) => column.hasAutoIncrement);
-    return (_database.delete(this.table)..where((tbl) => idColumn.equals(id)))
+    return await (_database.delete(this.table)
+          ..where((tbl) => idColumn.equals(id)))
         .go();
+  }
+
+  Future<int> insert(Insertable<D> item) async {
+    return await _database.into(this.table).insert(item);
   }
 }

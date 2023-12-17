@@ -9,7 +9,7 @@ class Categorias extends Table {
   TextColumn get icone => text()();
   TextColumn get cor => text()();
   IntColumn get id_tipos_movimentacao =>
-      integer().references(TiposMovimentacao, #id)();
+      integer().references(TiposMovimentacoes, #id)();
   DateTimeColumn get createdAt =>
       dateTime().withDefault(Constant(DateTime.now()))();
   DateTimeColumn get updatedAt => dateTime()();

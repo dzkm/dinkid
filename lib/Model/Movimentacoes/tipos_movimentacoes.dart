@@ -2,7 +2,7 @@
 import 'package:drift/drift.dart';
 
 @DataClassName('TipoMovimentacao')
-class TiposMovimentacao extends Table {
+class TiposMovimentacoes extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get descricao => text().withLength(min: 2, max: 32)();
   BoolColumn get aceita_saida => boolean().withDefault(Constant(true))();

@@ -15,6 +15,16 @@ class MovimentacaoRepository extends AbstractRepository {
         (tbl) => tbl.createdAt.equals(selectedDate);
     return await selectWithCustomWhere(filter);
   }
+
+  Future<int> deleteByAutoIncrement(int id) async {
+    var idColumn =
+        this.table.$columns.firstWhere((column) => column.hasAutoIncrement);
+    var ghostCompanion = MovimentacoesCompanion(
+        isDeleted: Value(true), deletedAt: Value(DateTime.now()));
+    return await (_database.update(this.table)
+          ..where((tbl) => idColumn.equals(id)))
+        .write(ghostCompanion);
+  }
 }
 
 final movimentacaoRepositoryProvider = Provider<MovimentacaoRepository>((ref) {

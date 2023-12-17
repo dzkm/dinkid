@@ -1,15 +1,17 @@
 import 'package:drift/drift.dart';
 import 'package:dinkid_mobile/Connections/Database/database.dart';
+import 'package:dinkid_mobile/Providers/Models/Repositories/InterfaceRepository.dart';
 
-abstract class AbstractRepository<T extends Table, D extends DataClass> {
+abstract class AbstractRepository<T extends Table, D extends DataClass>
+    implements InterfaceRepository {
   final AppDatabase _database;
   final TableInfo<T, D> table;
   AbstractRepository(this._database, this.table);
-  Future<List<D>> selectAll() async {
+  Future<List<DataClass>> selectAll() async {
     return await _database.select(this.table).get();
   }
 
-  Future<List<D>> selectAllButDeleted() async {
+  Future<List<DataClass>> selectAllButDeleted() async {
     var deletedColumn =
         table.$columns.firstWhere((column) => column.name == "deleted");
     return await (_database.select(this.table)
@@ -17,7 +19,7 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
         .get();
   }
 
-  Future<D> selectByAutoIncrement(int id) async {
+  Future<DataClass> selectByAutoIncrement(int id) async {
     try {
       var idColumn =
           table.$columns.firstWhere((column) => column.hasAutoIncrement);
@@ -33,7 +35,7 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
     }
   }
 
-  Future<List<D>> selectWithCustomWhere(
+  Future<List<DataClass>> selectWithCustomWhere(
       Expression<bool> Function(T tbl) filter) async {
     try {
       return await (_database.select(this.table)..where(filter)).get();
@@ -46,18 +48,18 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
     }
   }
 
-  Future<int> updateAll(UpdateCompanion<D> item) async {
+  Future<int> updateAll(Insertable<DataClass> item) async {
     return await _database.update(this.table).write(item);
   }
 
-  Future<bool> updateByAutoIncrement(UpdateCompanion<D> item) async {
+  Future<bool> updateByAutoIncrement(Insertable<DataClass> item) async {
     var idColumn =
-        table.$columns.firstWhere((column) => column.hasAutoIncrement);
+        this.table.$columns.firstWhere((column) => column.hasAutoIncrement);
     return await (_database.update(this.table).replace(item));
   }
 
-  Future<int> updateWithCustomWhere(
-      Expression<bool> Function(T tbl) filter, UpdateCompanion<D> item) async {
+  Future<int> updateWithCustomWhere(Expression<bool> Function(Table tbl) filter,
+      Insertable<DataClass> item) async {
     return await (_database.update(this.table)..where(filter)).write(item);
   }
 
@@ -69,7 +71,7 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
         .go();
   }
 
-  Future<int> insert(Insertable<D> item) async {
+  Future<int> insert(Insertable<DataClass> item) async {
     return await _database.into(this.table).insert(item);
   }
 }

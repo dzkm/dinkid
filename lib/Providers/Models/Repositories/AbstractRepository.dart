@@ -9,6 +9,14 @@ abstract class AbstractRepository<T extends Table, D extends DataClass> {
     return await _database.select(this.table).get();
   }
 
+  Future<List<D>> selectAllButDeleted() async {
+    var deletedColumn =
+        table.$columns.firstWhere((column) => column.name == "deleted");
+    return await (_database.select(this.table)
+          ..where((tbl) => deletedColumn.equals(false)))
+        .get();
+  }
+
   Future<D> selectByAutoIncrement(int id) async {
     try {
       var idColumn =

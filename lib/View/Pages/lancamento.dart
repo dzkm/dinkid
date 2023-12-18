@@ -6,6 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dinkid_mobile/View/Widgets/Usuario/Config/Categorias/CategoriaDropdownWidget.dart';
 
 final List<String> wallets = ["Cartão Sicoob", "Débito Nubank", "Dinheiro"];
+final entradaButtonColorProvider = StateProvider<Color>((ref) => Colors.grey);
+final saidaButtonColorProvider =
+    StateProvider<Color>((ref) => Color(0xFF31B0B8));
 
 class Lancamento extends ConsumerWidget {
   Lancamento({Key key}) : super(key: key);
@@ -16,14 +19,23 @@ class Lancamento extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final entradaButtonColor = ref.watch(entradaButtonColorProvider);
+    final saidaButtonColor = ref.watch(saidaButtonColorProvider);
     final entradaCarteiraNotifier = ref.watch(carteiraDropdownNotifierProvider);
-
     walletController.text = entradaCarteiraNotifier.descricao.value;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lançamento"),
-        backgroundColor: Colors.blue,
+        title: Text('Lançar'),
+        backgroundColor: Colors.blue.shade900,
+        centerTitle: true,
+        leading: IconButton(icon: Icon(Icons.cancel), onPressed: () {}),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.check),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Container(
         alignment: Alignment.center,
@@ -36,19 +48,44 @@ class Lancamento extends ConsumerWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               MaterialButton(
-                  color: Colors.grey,
-                  child: Text("Saida"),
-                  onPressed: () {},
-                  padding: EdgeInsets.all(35)),
+                  color: saidaButtonColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Text("Saida",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    ref.read(saidaButtonColorProvider.notifier).state =
+                        Color(0xFF31B0B8);
+                    ref.read(entradaButtonColorProvider.notifier).state =
+                        Color(0xFFA0A0A0);
+                  },
+                  padding: EdgeInsets.only(
+                      top: 25, bottom: 25, left: 50, right: 50)),
               MaterialButton(
-                  color: Colors.lightGreen,
-                  child: Text("Entrada"),
-                  onPressed: () {},
-                  padding: EdgeInsets.all(35)),
+                  color: entradaButtonColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Text("Entrada",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    ref.read(entradaButtonColorProvider.notifier).state =
+                        Color(0xFF31B0B8);
+                    ref.read(saidaButtonColorProvider.notifier).state =
+                        Color(0xFFA0A0A0);
+                  },
+                  padding: EdgeInsets.only(
+                      top: 25, bottom: 25, left: 50, right: 50)),
             ],
           ),
           SizedBox(height: 10),
@@ -80,7 +117,11 @@ class Lancamento extends ConsumerWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Expanded(child: TextField()),
+            child: SizedBox(
+                width: 250,
+                child: TextField(
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20))),
           ),
           SizedBox(height: 10),
           Text("Categoria",

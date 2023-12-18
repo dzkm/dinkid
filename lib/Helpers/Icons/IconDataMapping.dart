@@ -17,3 +17,8 @@ final jsonToIcon = ((String encodedJson) {
   final Map<String, dynamic> map = jsonDecode(encodedJson);
   return mapToIcon(map);
 });
+
+final iconToJson = ((IconData icon) {
+  final Map<String, dynamic> map = iconToMap(icon);
+  return jsonEncode(map);
+});

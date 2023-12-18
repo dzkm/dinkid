@@ -1,14 +1,16 @@
 // @dart=2.17
 import 'package:drift/drift.dart';
 import 'package:dinkid_mobile/Model/Movimentacoes/tipos_movimentacoes.dart';
+import 'package:flutter/src/material/icons.dart';
+import 'package:dinkid_mobile/Helpers/Icons/IconDataMapping.dart';
 
 @DataClassName('Categoria')
 class Categorias extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get descricao => text().withLength(min: 2, max: 32)();
-  TextColumn get icone => text().withDefault(Constant(
-      "{codePoint: 984405, fontFamily: MaterialIcons, fontPackage: null}"))();
-  TextColumn get cor => text().withDefault(Constant("#838383"))();
+  TextColumn get icone =>
+      text().withDefault(Constant(iconToJson(Icons.question_mark)))();
+  TextColumn get cor => text().withDefault(Constant("838383"))();
   IntColumn get id_tipos_movimentacao =>
       integer().references(TiposMovimentacoes, #id)();
   DateTimeColumn get createdAt =>

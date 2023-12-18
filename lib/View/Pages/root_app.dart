@@ -20,18 +20,14 @@ class _RootAppState extends State<RootApp> {
   List<Widget> pages = [
     DailyPage(),
     BudgetPage(),
-    CategoriasView(),
+    //CategoriasView(),
     Lancamento(),
   ];
 
-  void initializeStuff() async {
-    WidgetsFlutterBinding.ensureInitialized();
-  }
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
   }
 
   @override
@@ -47,7 +43,7 @@ class _RootAppState extends State<RootApp> {
         bottomNavigationBar: getFooter(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            selectedTab(3);
+            selectedTab(2);
           },
           child: Icon(
             Icons.attach_money,
@@ -56,7 +52,8 @@ class _RootAppState extends State<RootApp> {
           backgroundColor: primary,
           //params
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat);
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.centerDocked);
   }
 
   Widget getBody() {
@@ -70,7 +67,6 @@ class _RootAppState extends State<RootApp> {
     List<IconData> iconItems = [
       Ionicons.md_calendar,
       Ionicons.md_wallet,
-      Ionicons.md_list,
     ];
 
     return AnimatedBottomNavigationBar(
@@ -79,9 +75,10 @@ class _RootAppState extends State<RootApp> {
       inactiveColor: Colors.black.withOpacity(0.5),
       icons: iconItems,
       activeIndex: pageIndex,
-      gapLocation: GapLocation.end,
+      gapLocation: GapLocation.center,
       notchSmoothness: NotchSmoothness.softEdge,
       leftCornerRadius: 10,
+      rightCornerRadius: 10,
       iconSize: 25,
       onTap: (index) {
         selectedTab(index);

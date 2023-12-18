@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class RoundedIconWithBackground extends StatelessWidget {
-  final num width;
-  final num height;
+  final double width;
+  final double height;
   final Color boxColor;
   final IconData icon;
   final Color iconColor;
   const RoundedIconWithBackground(
       {Key key,
-      num this.width,
-      num this.height,
+      double this.width,
+      double this.height,
       Color this.boxColor,
       IconData this.icon,
       Color this.iconColor})

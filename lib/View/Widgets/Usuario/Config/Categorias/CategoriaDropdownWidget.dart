@@ -9,6 +9,12 @@ import 'package:dinkid_mobile/Helpers/Icons/IconDataMapping.dart';
 class CategoriaDropdownWidget extends ConsumerWidget {
   const CategoriaDropdownWidget({Key key}) : super(key: key);
 
+  Color getContrastingColor(Color color) {
+    return ThemeData.estimateBrightnessForColor(color) == Brightness.dark
+        ? Colors.white
+        : Colors.black;
+  }
+
   Widget body(BuildContext context, AsyncSnapshot<List<Categoria>> snapshot) {
     if (snapshot.hasError) {
       return const Text('Erro ao carregar categorias');
@@ -24,18 +30,19 @@ class CategoriaDropdownWidget extends ConsumerWidget {
       return DropdownMenu(
         controller: categoriaController,
         dropdownMenuEntries: snapshot.data
-            .map<DropdownMenuEntry<Categoria>>(
-                (Categoria categoria) => DropdownMenuEntry<Categoria>(
-                      value: categoria,
-                      label: categoria.descricao,
-                      leadingIcon: RoundedIconWithBackground(
-                        width: 50,
-                        height: 50,
-                        boxColor: categoriaHexColor(categoria.cor),
-                        icon: jsonToIcon(categoria.icone),
-                        iconColor: categoriaHexColor(categoria.cor),
-                      ),
-                    ))
+            .map<DropdownMenuEntry<Categoria>>((Categoria categoria) =>
+                DropdownMenuEntry<Categoria>(
+                  value: categoria,
+                  label: categoria.descricao,
+                  leadingIcon: RoundedIconWithBackground(
+                    width: 50,
+                    height: 50,
+                    boxColor: categoriaHexColor(categoria.cor),
+                    icon: jsonToIcon(categoria.icone),
+                    iconColor:
+                        getContrastingColor(categoriaHexColor(categoria.cor)),
+                  ),
+                ))
             .toList(),
       );
     }
